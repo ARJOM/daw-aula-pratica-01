@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Lista de Jogos</h2>
+    {% if jogos.__len__()==0 %}
+    <p>Não há jogos registrados</p>
+    {% endif %}
+    <ul>
+    {% for jogo in jogos %}
+        <li>{{ jogo.nome }} - {{ jogo.tempoDePartida }}min - <a href="apagar/{{ jogo.id }}">Apagar</a></li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

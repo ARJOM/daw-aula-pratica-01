@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Base</title>
+</head>
+<body>
+    <p>Bem-vindo usuário {{numero}}</p>
+    {% if numero%2==0 %}
+        <p>O número é par</p>
+    {% elif numero%5==0 %}
+        <p>O número é divisível por 5</p>
+    {% endif %}
+</body>
+</html>
