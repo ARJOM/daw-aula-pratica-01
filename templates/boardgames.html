@@ -12,7 +12,7 @@
     {% endif %}
     <ul>
     {% for jogo in jogos %}
-        <li>{{ jogo.nome }} - {{ jogo.tempoDePartida }}min - <a href="apagar/{{ jogo.id }}">Apagar</a></li>
+        <li>{{ jogo.nome }} - {{ jogo.tempoDePartida }}min - <a href="editar/{{ jogo.id }}">Editar</a> - <a href="apagar/{{ jogo.id }}">Apagar</a></li>
     {% endfor %}
     </ul>
 </body>

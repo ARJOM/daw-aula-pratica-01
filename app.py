@@ -1,7 +1,7 @@
 import random
 from flask import Flask, render_template, redirect, request
 
-from db import listar_boardgames, remove_boardgame, novo_boardgame
+from db import listar_boardgames, remove_boardgame, novo_boardgame, detalha_boardgame, atualiza_boardgame
 
 # Criação de app
 app = Flask(__name__)
@@ -52,6 +52,15 @@ def cadastrar():
         novo_boardgame(dados.get('nome'), dados.get('duracao'), dados.get('min'), dados.get('max'), dados.get('ideal'))
         return redirect('/boardgames')
     return render_template('form_boardgame.html', title='Novo Jogo')
+
+@app.route("/editar/<int:chave>", methods=['GET', 'POST'])
+def editar(chave):
+    if request.method == 'POST':
+        dados = request.values.to_dict()
+        atualiza_boardgame(chave, dados.get('nome'), dados.get('duracao'), dados.get('min'), dados.get('max'), dados.get('ideal'))
+        return redirect('/boardgames')
+    jogo = detalha_boardgame(chave)
+    return render_template('form_boardgame.html', jogo=jogo, title='Editar Jogo')
 
 
 

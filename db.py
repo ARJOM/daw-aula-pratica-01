@@ -80,5 +80,25 @@ def remove_boardgame(id):
     conn.close()
 
 
+def detalha_boardgame(id):
+    conn = sqlite3.connect('boardgames.db')
+    cursor = conn.cursor()
+    value = cursor.execute(f"""
+            SELECT * 
+            FROM boardgames
+            WHERE id={id}
+        """)
+    item = value.fetchone()
+    conn.close()
+    return {
+        'id': item[0],
+        'nome': item[1],
+        'tempoDePartida': item[2],
+        'minimoJogadores': item[3],
+        'maximoJogadores': item[4],
+        'idealJogadores': item[5]
+    }
+
+
 if __name__=='__main__':
     cria_tabela()
