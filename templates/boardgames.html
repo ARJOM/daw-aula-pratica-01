@@ -6,6 +6,7 @@
 </head>
 <body>
     <h2>Lista de Jogos</h2>
+    <a href="{{ url_for('cadastrar') }}">Adicionar jogo</a>
     {% if jogos.__len__()==0 %}
     <p>Não há jogos registrados</p>
     {% endif %}

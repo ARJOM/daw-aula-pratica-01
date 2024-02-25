@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h2>{{ title }}</h2>
+    <form method="post">
+        <label for="nome">Nome do jogo
+            <input type="text" name="nome" placeholder="Ex: Catan, Carcassonne" required/>
+        </label>
+        <label for="duracao">Duração do jogo
+            <input type="text" name="duracao" placeholder="Tempo em minutos" required/>
+        </label>
+        <label for="min">Mínimo de jogadores
+            <input type="number" name="min" placeholder="Número mínimo para jogar" required/>
+        </label>
+        <label for="max">Máximo de jogadores
+            <input type="number" name="max" placeholder="Número máximo para jogar" required/>
+        </label>
+        <label for="ideal">Número ideal de jogadores
+            <input type="number" name="ideal"/>
+        </label>
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
