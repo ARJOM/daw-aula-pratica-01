@@ -53,7 +53,10 @@ def listar_boardgames():
     return resultado
 
 
-def atualiza_boardgame(id, nome, tempoDePartida, min, max, ideal):
+def atualiza_boardgame(id, nome, tempoDePartida, min, max, ideal=None):
+    if not ideal:
+        ideal = 'Null'
+
     conn = sqlite3.connect('boardgames.db')
     cursor = conn.cursor()
     cursor.execute(f"""

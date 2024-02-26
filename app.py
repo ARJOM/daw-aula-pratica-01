@@ -40,7 +40,7 @@ def list_boardgames():
 
 
 # Recebendo parâmetro na url, execução de operação do banco e redirecionamento
-@app.route("/apagar/<int:chave>")
+@app.route("/remover/<int:chave>")
 def apagar(chave):
     remove_boardgame(chave)
     return redirect('/boardgames')
@@ -48,15 +48,15 @@ def apagar(chave):
 @app.route("/novo", methods=['GET', 'POST'])
 def cadastrar():
     if request.method == 'POST':
-        dados = request.values.to_dict()
+        dados = request.form.to_dict()
         novo_boardgame(dados.get('nome'), dados.get('duracao'), dados.get('min'), dados.get('max'), dados.get('ideal'))
         return redirect('/boardgames')
-    return render_template('form_boardgame.html', title='Novo Jogo')
+    return render_template('form_boardgame.html', jogo=None, title='Novo Jogo')
 
 @app.route("/editar/<int:chave>", methods=['GET', 'POST'])
 def editar(chave):
     if request.method == 'POST':
-        dados = request.values.to_dict()
+        dados = request.form.to_dict()
         atualiza_boardgame(chave, dados.get('nome'), dados.get('duracao'), dados.get('min'), dados.get('max'), dados.get('ideal'))
         return redirect('/boardgames')
     jogo = detalha_boardgame(chave)

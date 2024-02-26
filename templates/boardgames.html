@@ -10,10 +10,37 @@
     {% if jogos.__len__()==0 %}
     <p>Não há jogos registrados</p>
     {% endif %}
-    <ul>
-    {% for jogo in jogos %}
-        <li>{{ jogo.nome }} - {{ jogo.tempoDePartida }}min - <a href="editar/{{ jogo.id }}">Editar</a> - <a href="apagar/{{ jogo.id }}">Apagar</a></li>
-    {% endfor %}
-    </ul>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Duração</th>
+                <th>Mínimo de Jogadores</th>
+                <th>Máximo de Jogadores</th>
+                <th>Número Ideal de Jogadores</th>
+                <th>Editar</th>
+                <th>Remover</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for jogo in jogos %}
+            <tr>
+                <td>{{ jogo.nome }}</td>
+                <td>{{ jogo.tempoDePartida }}</td>
+                <td>{{ jogo.minimoJogadores }}</td>
+                <td>{{ jogo.maximoJogadores }}</td>
+                <td>
+                    {% if not jogo.idealJogadores %}
+                        -
+                    {% else %}
+                        {{ jogo.idealJogadores }}
+                    {% endif %}
+                </td>
+                <td><a href="{{ url_for('editar', chave=jogo.id)}}">Editar</a></td>
+                <td><a href="{{ url_for('apagar', chave=jogo.id)}}">Remover</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
